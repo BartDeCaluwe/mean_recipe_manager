@@ -1,0 +1,25 @@
+<form class="well">
+    <div class="form-group">
+        <input type="text" [(ngModel)]="name" name="name" class="form-control" placeholder="Add recipe"><br>
+        <input type="text" [(ngModel)]="ingredient" name="ingredient" class="form-control" placeholder="Add ingredient"><br>
+        <input type="text" [(ngModel)]="quantity" name="quantity" class="form-control" placeholder="Add quantity">
+    </div>
+    <input type="button" (click)="addRecipe($event)" class="btn btn-succes" value="Add recipe">
+</form>
+
+<div class="recipe-list">
+    <div class="row" *ngFor="let recipe of recipes">
+        <div class="col-md-3">
+            {{ recipe.name }}
+        </div>
+        <div class="col-md-6">
+            <p *ngFor="let ingredient of recipe.ingredients">
+                {{ ingredient.name}} | {{ ingredient.quantity }}
+            </p>
+        </div>
+        <div class="col-md-3">
+            <input type="button" (click)="deleteRecipe(recipe._id)" class="btn btn-danger" value="Delete">
+        </div>
+    </div>
+    <hr>
+</div>
