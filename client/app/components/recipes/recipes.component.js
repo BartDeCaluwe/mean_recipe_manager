@@ -9,16 +9,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var recipe_service_1 = require('../../services/recipe.service');
 var RecipesComponent = (function () {
-    function RecipesComponent(recipeService) {
+    function RecipesComponent(recipeService, _fb) {
         var _this = this;
         this.recipeService = recipeService;
+        this._fb = _fb;
         this.recipeService.getRecipes()
             .subscribe(function (recipes) {
             _this.recipes = recipes;
         });
     }
+    RecipesComponent.prototype.ngOnInit = function () {
+        this.myForm = this._fb.group({
+            name: ['', [forms_1.Validators.required]],
+            ingredients: this._fb.array([
+                this.initIngredients(),
+            ])
+        });
+    };
+    RecipesComponent.prototype.initIngredients = function () {
+        return this._fb.group({
+            ingredientName: ['', forms_1.Validators.required],
+            quantity: ['', forms_1.Validators.required]
+        });
+    };
+    RecipesComponent.prototype.addIngredient = function () {
+        var control = this.myForm.controls['ingredients'];
+        control.push(this.initIngredients());
+    };
+    RecipesComponent.prototype.removeIngredient = function (i) {
+        var control = this.myForm.controls['ingredients'];
+        control.removeAt(i);
+    };
     RecipesComponent.prototype.addRecipe = function (event) {
         var _this = this;
         event.preventDefault();
@@ -61,7 +85,7 @@ var RecipesComponent = (function () {
             selector: 'recipes',
             templateUrl: 'recipes.component.html'
         }), 
-        __metadata('design:paramtypes', [recipe_service_1.RecipeService])
+        __metadata('design:paramtypes', [recipe_service_1.RecipeService, forms_1.FormBuilder])
     ], RecipesComponent);
     return RecipesComponent;
 }());

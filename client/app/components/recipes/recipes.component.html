@@ -1,11 +1,45 @@
-<form class="well">
-    <div class="form-group">
-        <input type="text" [(ngModel)]="name" name="name" class="form-control" placeholder="Add recipe"><br>
-        <input type="text" [(ngModel)]="ingredient" name="ingredient" class="form-control" placeholder="Add ingredient"><br>
-        <input type="text" [(ngModel)]="quantity" name="quantity" class="form-control" placeholder="Add quantity">
-    </div>
-    <input type="button" (click)="addRecipe($event)" class="btn btn-succes" value="Add recipe">
-</form>
+<div class="container">
+    <h4>Add Recipe</h4>
+    <form [formGroup]="myForm" novalidate (ngSubmit)="addRecipe(myForm.value)">
+        <!--name-->
+        <div class="form-group">
+            <label>Recipe Name</label>
+            <input type="text" formControlName="name">
+            <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+                Recipe name is required
+            </small>
+        </div>
+        <!--list of ingredients-->
+        <div formArrayName="ingredients">
+            <div *ngFor="let ingredient of myForm.controls.ingredients.controls; let i=index">
+                <div>
+                    <span>Ingredient {{i + 1 }}</span>
+                    <span *ngIf="myForm.controls.ingredients.controls.length > 1" (click)="removeIngredient(i)"></span>
+                </div>
+            </div>
+        </div>
+        <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+        <div [formGroupName]="i">
+            <!--ingredient name-->
+            <div>
+                <label>Ingredient</label>
+                <input type="text" formControlName="ingredientName">
+                <small *ngIf="!myForm.controls.ingredients.controls[i].controls.ingredientName.valid" class="text-danger">
+                    Ingredient name is required
+                </small>
+            </div>
+            <!--quantity-->
+            <div>
+                <label>Quantity</label>
+                <input type="text" formControlName="quantity">
+                <small *ngIf="!myForm.controls.ingredients.controls[i].controls.quantity.valid" class="text-danger">
+                    Ingredient quantity is required
+                </small>
+            </div>
+        </div>
+        <button type="submit" [disabled]="!myForm.valid">Submit</button>
+    </form>
+</div>
 
 <div class="recipe-list">
     <div class="row" *ngFor="let recipe of recipes">
