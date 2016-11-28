@@ -53,7 +53,7 @@ var RecipesComponent = (function () {
         this.recipeService.addRecipe(newRecipe)
             .subscribe(function (recipe) {
             _this.recipes.push(recipe);
-            _this.clearForm();
+            _this.myForm.reset();
         });
     };
     RecipesComponent.prototype.deleteRecipe = function (id) {
@@ -68,11 +68,6 @@ var RecipesComponent = (function () {
                 }
             }
         });
-    };
-    RecipesComponent.prototype.clearForm = function () {
-        this.name = "";
-        this.ingredient = "";
-        this.quantity = "";
     };
     RecipesComponent = __decorate([
         core_1.Component({

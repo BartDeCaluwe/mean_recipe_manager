@@ -60,7 +60,7 @@ export class RecipesComponent implements OnInit{
         this.recipeService.addRecipe(newRecipe)
             .subscribe(recipe => {
                 this.recipes.push(recipe);
-                this.clearForm();
+                this.myForm.reset();
             })
     }
 
@@ -77,20 +77,4 @@ export class RecipesComponent implements OnInit{
                 }
             });
     }
-
-    clearForm(){
-        this.name = "";
-        this.ingredient = "";
-        this.quantity = "";
-    }
-
-//     addNewChoice = function() {
-//     var newIngredients = this.ingredients.length+1;
-//     this.ingredients.push({'id':'Ingredient'+newIngredients});
-//     };
-    
-//   removeChoice = function() {
-//     var lastItem = this.ingredients.length-1;
-//     this.ingredients.splice(lastItem);
-//   };
 }
