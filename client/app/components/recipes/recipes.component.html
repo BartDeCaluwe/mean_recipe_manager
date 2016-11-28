@@ -5,8 +5,9 @@
         <div class="form-group">
             <label>Recipe Name</label>
             <input type="text" formControlName="name">
-            <small *ngIf="!myForm.controls.name.valid" class="text-danger">
-                Recipe name is required
+            <small [hidden]="myForm.controls.name.valid || myForm.controls.name.pristine"
+                class="alert alert-danger">
+                Name is required
             </small>
         </div>
         <!--list of ingredients-->
@@ -16,25 +17,29 @@
                     <span>Ingredient {{i + 1 }}</span>
                     <span *ngIf="myForm.controls.ingredients.controls.length > 1" (click)="removeIngredient(i)"></span>
                 </div>
-            </div>
-        </div>
-        <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
-        <div [formGroupName]="i">
-            <!--ingredient name-->
-            <div>
-                <label>Ingredient</label>
-                <input type="text" formControlName="ingredientName">
-                <small *ngIf="!myForm.controls.ingredients.controls[i].controls.ingredientName.valid" class="text-danger">
-                    Ingredient name is required
-                </small>
-            </div>
-            <!--quantity-->
-            <div>
-                <label>Quantity</label>
-                <input type="text" formControlName="quantity">
-                <small *ngIf="!myForm.controls.ingredients.controls[i].controls.quantity.valid" class="text-danger">
-                    Ingredient quantity is required
-                </small>
+            
+        
+                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                <div [formGroupName]="i">
+                    <!--ingredient name-->
+                    <div>
+                        <label>Ingredient</label>
+                        <input type="text" formControlName="ingredientName">
+                        <small [hidden]="myForm.controls.ingredients.controls[i].controls.ingredientName.valid || myForm.controls.ingredients.controls[i].controls.ingredientName.pristine"
+                            class="alert alert-danger">
+                            Name is required
+                        </small>
+                    </div>
+                    <!--quantity-->
+                    <div>
+                        <label>Quantity</label>
+                        <input type="text" formControlName="quantity">
+                        <small [hidden]="myForm.controls.ingredients.controls[i].controls.quantity.valid || myForm.controls.ingredients.controls[i].controls.quantity.pristine"
+                            class="alert alert-danger">
+                            Name is required
+                        </small>
+                    </div>
+                </div>
             </div>
         </div>
         <button type="submit" [disabled]="!myForm.valid">Submit</button>
