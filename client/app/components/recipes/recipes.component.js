@@ -31,7 +31,7 @@ var RecipesComponent = (function () {
     };
     RecipesComponent.prototype.initIngredients = function () {
         return this._fb.group({
-            ingredientName: ['', forms_1.Validators.required],
+            name: ['', forms_1.Validators.required],
             quantity: ['', forms_1.Validators.required]
         });
     };
@@ -43,17 +43,12 @@ var RecipesComponent = (function () {
         var control = this.myForm.controls['ingredients'];
         control.removeAt(i);
     };
-    RecipesComponent.prototype.addRecipe = function (event) {
+    RecipesComponent.prototype.addRecipe = function (formValue) {
         var _this = this;
-        event.preventDefault();
+        //event.preventDefault();
         var newRecipe = {
-            name: this.name,
-            ingredients: [
-                {
-                    name: this.ingredient,
-                    quantity: this.quantity
-                }
-            ]
+            name: formValue.name,
+            ingredients: formValue.ingredients
         };
         this.recipeService.addRecipe(newRecipe)
             .subscribe(function (recipe) {
