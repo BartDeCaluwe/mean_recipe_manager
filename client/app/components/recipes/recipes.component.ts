@@ -13,6 +13,7 @@ export class RecipesComponent implements OnInit{
 
     recipes: Recipe[];
     name: string;
+    ingredients: any[];
     ingredient: string;
     quantity: string;
 
@@ -34,7 +35,7 @@ export class RecipesComponent implements OnInit{
 
     initIngredients(){
         return this._fb.group({
-            ingredientName: ['', Validators.required],
+            name: ['', Validators.required],
             quantity: ['', Validators.required]
         });
     }
@@ -49,16 +50,11 @@ export class RecipesComponent implements OnInit{
         control.removeAt(i);        
     }
 
-    addRecipe(event){
-        event.preventDefault();
+    addRecipe(formValue){
+        //event.preventDefault();
         var newRecipe = {
-            name: this.name,
-            ingredients: [
-                {
-                    name: this.ingredient,
-                    quantity: this.quantity
-                }
-            ]
+            name: formValue.name,
+            ingredients: formValue.ingredients
         }
 
         this.recipeService.addRecipe(newRecipe)
