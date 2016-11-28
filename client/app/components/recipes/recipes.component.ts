@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Validators, FormGroup, FormArray, FormBuilder} from '@angular/forms';
 import { RecipeService } from '../../services/recipe.service';
 import { Recipe } from '../../../Recipe';
 
@@ -7,18 +8,45 @@ import { Recipe } from '../../../Recipe';
   selector: 'recipes',
   templateUrl: 'recipes.component.html'
 })
-export class RecipesComponent {
+export class RecipesComponent implements OnInit{
+    public myForm: FormGroup;
+
     recipes: Recipe[];
-    ingredients: string[];
     name: string;
     ingredient: string;
     quantity: string;
 
-    constructor(private recipeService:RecipeService){
+    constructor(private recipeService:RecipeService, private _fb: FormBuilder){
         this.recipeService.getRecipes()
             .subscribe(recipes => {
                 this.recipes = recipes;
             })
+    }
+    
+    ngOnInit(){
+        this.myForm = this._fb.group({
+            name: ['', [Validators.required]],
+            ingredients: this._fb.array([
+                this.initIngredients(),
+            ])
+        });
+    }
+
+    initIngredients(){
+        return this._fb.group({
+            ingredientName: ['', Validators.required],
+            quantity: ['', Validators.required]
+        });
+    }
+
+    addIngredient(){
+        const control = <FormArray>this.myForm.controls['ingredients'];
+        control.push(this.initIngredients());
+    }
+
+    removeIngredient(i: number){
+        const control = <FormArray>this.myForm.controls['ingredients'];
+        control.removeAt(i);        
     }
 
     addRecipe(event){

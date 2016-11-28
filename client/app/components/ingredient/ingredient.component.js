@@ -9,24 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
-var app_component_1 = require('./app.component');
-var ingredient_component_1 = require('./components/ingredient/ingredient.component');
-var recipes_component_1 = require('./components/recipes/recipes.component');
-var AppModule = (function () {
-    function AppModule() {
+var IngredientComponent = (function () {
+    function IngredientComponent() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.ReactiveFormsModule],
-            declarations: [app_component_1.AppComponent, recipes_component_1.RecipesComponent, ingredient_component_1.IngredientComponent],
-            bootstrap: [app_component_1.AppComponent]
+    __decorate([
+        core_1.Input('group'), 
+        __metadata('design:type', forms_1.FormGroup)
+    ], IngredientComponent.prototype, "ingredientForm", void 0);
+    IngredientComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'ingredient',
+            templateUrl: 'ingredient.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], IngredientComponent);
+    return IngredientComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.IngredientComponent = IngredientComponent;
+//# sourceMappingURL=ingredient.component.js.map
