@@ -15,32 +15,17 @@
             <div *ngFor="let ingredient of myForm.controls.ingredients.controls; let i=index">
                 <div>
                     <span>Ingredient {{i + 1 }}</span>
-                    <span *ngIf="myForm.controls.ingredients.controls.length > 1" (click)="removeIngredient(i)"></span>
+                    <a (click)="removeIngredient(i)" style="cursor: default">Remove</a>
                 </div>
-            
-        
-                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
                 <div [formGroupName]="i">
-                    <!--ingredient name-->
-                    <div>
-                        <label>Ingredient</label>
-                        <input type="text" formControlName="ingredientName">
-                        <small [hidden]="myForm.controls.ingredients.controls[i].controls.ingredientName.valid || myForm.controls.ingredients.controls[i].controls.ingredientName.pristine"
-                            class="alert alert-danger">
-                            Name is required
-                        </small>
-                    </div>
-                    <!--quantity-->
-                    <div>
-                        <label>Quantity</label>
-                        <input type="text" formControlName="quantity">
-                        <small [hidden]="myForm.controls.ingredients.controls[i].controls.quantity.valid || myForm.controls.ingredients.controls[i].controls.quantity.pristine"
-                            class="alert alert-danger">
-                            Name is required
-                        </small>
-                    </div>
+                    <ingredient [group]="myForm.controls.ingredients.controls[i]"></ingredient>
                 </div>
             </div>
+        </div>
+        <div class="margin-20">
+          <a (click)="addIngredient()" style="cursor: default">
+            Add another ingredient +
+          </a>
         </div>
         <button type="submit" [disabled]="!myForm.valid">Submit</button>
     </form>
