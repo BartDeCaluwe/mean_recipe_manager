@@ -24,6 +24,7 @@ var RecipesComponent = (function () {
     RecipesComponent.prototype.ngOnInit = function () {
         this.myForm = this._fb.group({
             name: ['', [forms_1.Validators.required]],
+            body: ['', [forms_1.Validators.required, forms_1.Validators.maxLength(10000)]],
             ingredients: this._fb.array([
                 this.initIngredients(),
             ])
@@ -48,8 +49,10 @@ var RecipesComponent = (function () {
         //event.preventDefault();
         var newRecipe = {
             name: formValue.name,
-            ingredients: formValue.ingredients
+            ingredients: formValue.ingredients,
+            body: formValue.body
         };
+        console.log(formValue);
         this.recipeService.addRecipe(newRecipe)
             .subscribe(function (recipe) {
             _this.recipes.push(recipe);

@@ -14,6 +14,7 @@ export class RecipesComponent implements OnInit{
     recipes: Recipe[];
     name: string;
     ingredients: any[];
+    body: string;
     ingredient: string;
     quantity: string;
 
@@ -27,6 +28,7 @@ export class RecipesComponent implements OnInit{
     ngOnInit(){
         this.myForm = this._fb.group({
             name: ['', [Validators.required]],
+            body: ['', [Validators.required, Validators.maxLength(10000)]],
             ingredients: this._fb.array([
                 this.initIngredients(),
             ])
@@ -54,9 +56,10 @@ export class RecipesComponent implements OnInit{
         //event.preventDefault();
         var newRecipe = {
             name: formValue.name,
-            ingredients: formValue.ingredients
+            ingredients: formValue.ingredients,
+            body: formValue.body
         }
-
+        console.log(formValue);
         this.recipeService.addRecipe(newRecipe)
             .subscribe(recipe => {
                 this.recipes.push(recipe);
