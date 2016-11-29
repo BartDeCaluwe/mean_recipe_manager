@@ -9,21 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var recipe_service_1 = require('./services/recipe.service');
-var cookbook_service_1 = require('./services/cookbook.service');
-var AppComponent = (function () {
-    function AppComponent() {
+var cookbook_service_1 = require('../../services/cookbook.service');
+var CookbooksComponent = (function () {
+    function CookbooksComponent(cookbookService) {
+        var _this = this;
+        this.cookbookService = cookbookService;
+        this.cookbookService.getCookbooks()
+            .subscribe(function (cookbooks) {
+            _this.cookbooks = cookbooks;
+        });
     }
-    AppComponent = __decorate([
+    CookbooksComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'my-app',
-            templateUrl: 'app.component.html',
-            providers: [recipe_service_1.RecipeService, cookbook_service_1.CookbookService]
+            selector: 'cookbooks',
+            templateUrl: 'cookbooks.component.html'
         }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+        __metadata('design:paramtypes', [cookbook_service_1.CookbookService])
+    ], CookbooksComponent);
+    return CookbooksComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.CookbooksComponent = CookbooksComponent;
+//# sourceMappingURL=cookbooks.component.js.map

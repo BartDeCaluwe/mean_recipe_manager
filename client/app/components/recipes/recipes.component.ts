@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder} from '@angular/forms';
 import { RecipeService } from '../../services/recipe.service';
-import { Recipe } from '../../../Recipe';
+import { Recipe } from '../../../models/Recipe';
 
 @Component({
   moduleId: module.id,

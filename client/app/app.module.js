@@ -11,17 +11,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
+var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
 var ingredient_component_1 = require('./components/ingredient/ingredient.component');
 var recipes_component_1 = require('./components/recipes/recipes.component');
+var cookbooks_component_1 = require('./components/cookbooks/cookbooks.component');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.ReactiveFormsModule],
-            declarations: [app_component_1.AppComponent, recipes_component_1.RecipesComponent, ingredient_component_1.IngredientComponent],
+            imports: [
+                platform_browser_1.BrowserModule,
+                http_1.HttpModule,
+                forms_1.ReactiveFormsModule,
+                router_1.RouterModule.forRoot([
+                    {
+                        path: '',
+                        component: recipes_component_1.RecipesComponent
+                    },
+                    {
+                        path: 'cookbooks',
+                        component: cookbooks_component_1.CookbooksComponent
+                    }
+                ])
+            ],
+            declarations: [app_component_1.AppComponent, recipes_component_1.RecipesComponent, ingredient_component_1.IngredientComponent, cookbooks_component_1.CookbooksComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

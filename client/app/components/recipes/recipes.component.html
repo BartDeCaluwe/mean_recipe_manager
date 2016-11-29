@@ -1,3 +1,5 @@
+<h1>My Recipes</h1>
+<hr>
 <div class="container">
     <h4>Add Recipe</h4>
     <form [formGroup]="myForm" novalidate (ngSubmit)="addRecipe(myForm.value)" class="well">
@@ -38,9 +40,8 @@
         <button type="submit" [disabled]="!myForm.valid">Submit</button>
     </form>
 </div>
-
 <div class="recipe-list">
-    <div class="row" *ngFor="let recipe of recipes">
+    <div class="row recipeRow" *ngFor="let recipe of recipes">
         <div class="col-md-3">
             {{ recipe.name }}
         </div>
