@@ -19,6 +19,11 @@ var CookbooksComponent = (function () {
             _this.cookbooks = cookbooks;
         });
     }
+    CookbooksComponent.prototype.onSelect = function (cookbook) {
+        //this.router.navigate(['/cookbook', cookbook._id]);
+        console.log("blablabla");
+        console.log(cookbook);
+    };
     CookbooksComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

@@ -13,6 +13,11 @@ export class RecipeService{
             .map(res => res.json());
     }
 
+    getRecipe(id){
+        return this.http.get('/api/recipe/' + id)
+            .map(res => res.json());
+    }
+
     addRecipe(newRecipe){
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');

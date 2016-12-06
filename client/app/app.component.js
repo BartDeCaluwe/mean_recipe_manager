@@ -11,9 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var recipe_service_1 = require('./services/recipe.service');
 var cookbook_service_1 = require('./services/cookbook.service');
+var forms_1 = require('@angular/forms');
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(_fb) {
+        this._fb = _fb;
     }
+    AppComponent.prototype.ngOnInit = function () {
+        this.myForm = this._fb.group({
+            searchString: ['', [forms_1.Validators.required]],
+        });
+    };
     AppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -21,7 +28,7 @@ var AppComponent = (function () {
             templateUrl: 'app.component.html',
             providers: [recipe_service_1.RecipeService, cookbook_service_1.CookbookService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [forms_1.FormBuilder])
     ], AppComponent);
     return AppComponent;
 }());

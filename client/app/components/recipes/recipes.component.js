@@ -16,6 +16,8 @@ var RecipesComponent = (function () {
         var _this = this;
         this.recipeService = recipeService;
         this._fb = _fb;
+        this.showForm = false;
+        this.queryString = "";
         this.recipeService.getRecipes()
             .subscribe(function (recipes) {
             _this.recipes = recipes;
@@ -57,9 +59,11 @@ var RecipesComponent = (function () {
             .subscribe(function (recipe) {
             _this.recipes.push(recipe);
             _this.myForm.reset();
+            _this.resetQueryString();
         });
     };
     RecipesComponent.prototype.deleteRecipe = function (id) {
+        var _this = this;
         var recipes = this.recipes;
         this.recipeService.deleteRecipe(id)
             .subscribe(function (data) {
@@ -67,10 +71,17 @@ var RecipesComponent = (function () {
                 for (var i = 0; i < recipes.length; i++) {
                     if (recipes[i]._id == id) {
                         recipes.splice(i, 1);
+                        _this.resetQueryString();
                     }
                 }
             }
         });
+    };
+    RecipesComponent.prototype.resetQueryString = function () {
+        this.queryString = " ";
+    };
+    RecipesComponent.prototype.toggleForm = function () {
+        this.showForm = !this.showForm;
     };
     RecipesComponent = __decorate([
         core_1.Component({

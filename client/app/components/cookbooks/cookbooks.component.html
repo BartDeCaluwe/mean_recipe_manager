@@ -1,4 +1,6 @@
 <h1>COOKBOOKS</h1>
-<div *ngFor="let cookbook of cookbooks">
-    <p>{{ cookbook.name }}</p>
-</div>
+  <ul class="items">
+    <li *ngFor="let cookbook of cookbooks" (click)="onSelect(cookbook._id)">
+      <span class="badge">{{ cookbook._id }}</span> {{ cookbook.name }}
+    </li>
+  </ul>

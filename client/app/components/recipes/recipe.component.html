@@ -1,0 +1,14 @@
+<div class="jumbotron jumbotron-fluid col-md-8">
+    <div class="container" *ngIf="recipe">
+        <h1 class="display-3">{{ recipe.name}}</h1>
+        <div *ngFor="let ingredient of recipe.ingredients">
+            <p class="lead">
+                {{ ingredient.quantity }} {{ ingredient.name }}
+            </p>
+        </div>
+        <p>
+            {{ recipe.body }}
+        </p>
+    </div>
+    <button (click)="goToRecipes()">BACK</button>
+</div>

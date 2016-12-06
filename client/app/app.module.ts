@@ -7,17 +7,29 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent }   from './app.component';
 import { IngredientComponent } from './components/ingredient/ingredient.component'
 import { RecipesComponent } from './components/recipes/recipes.component';
+import { RecipeComponent } from './components/recipes/recipe.component';
 import { CookbooksComponent } from './components/cookbooks/cookbooks.component';
+import { SearchPipe } from './components/searchPipe/search-pipe';
 
 @NgModule({
   imports:      [ 
     BrowserModule, 
-    HttpModule, 
+    HttpModule,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: '',
-        component: RecipesComponent
+        redirectTo: '/recipes',
+        pathMatch: 'full'
+      },
+      {
+        path: 'recipes',
+        component: RecipesComponent        
+      },
+      {
+        path: 'recipe/:_id',
+        component: RecipeComponent
       },
       {
         path: 'cookbooks',
@@ -25,7 +37,7 @@ import { CookbooksComponent } from './components/cookbooks/cookbooks.component';
       }
     ])
     ],
-  declarations: [ AppComponent, RecipesComponent, IngredientComponent, CookbooksComponent ],
+  declarations: [ AppComponent, RecipesComponent, IngredientComponent, CookbooksComponent, RecipeComponent, SearchPipe ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

@@ -16,7 +16,9 @@ var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
 var ingredient_component_1 = require('./components/ingredient/ingredient.component');
 var recipes_component_1 = require('./components/recipes/recipes.component');
+var recipe_component_1 = require('./components/recipes/recipe.component');
 var cookbooks_component_1 = require('./components/cookbooks/cookbooks.component');
+var search_pipe_1 = require('./components/searchPipe/search-pipe');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,11 +27,21 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpModule,
+                forms_1.FormsModule,
                 forms_1.ReactiveFormsModule,
                 router_1.RouterModule.forRoot([
                     {
                         path: '',
+                        redirectTo: '/recipes',
+                        pathMatch: 'full'
+                    },
+                    {
+                        path: 'recipes',
                         component: recipes_component_1.RecipesComponent
+                    },
+                    {
+                        path: 'recipe/:_id',
+                        component: recipe_component_1.RecipeComponent
                     },
                     {
                         path: 'cookbooks',
@@ -37,7 +49,7 @@ var AppModule = (function () {
                     }
                 ])
             ],
-            declarations: [app_component_1.AppComponent, recipes_component_1.RecipesComponent, ingredient_component_1.IngredientComponent, cookbooks_component_1.CookbooksComponent],
+            declarations: [app_component_1.AppComponent, recipes_component_1.RecipesComponent, ingredient_component_1.IngredientComponent, cookbooks_component_1.CookbooksComponent, recipe_component_1.RecipeComponent, search_pipe_1.SearchPipe],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder} from '@angular/forms';
 import { RecipeService } from '../../services/recipe.service';
 import { Recipe } from '../../../models/Recipe';
+import {SearchPipe} from '../searchPipe/search-pipe';
 
 @Component({
   moduleId: module.id,
@@ -15,8 +16,9 @@ export class RecipesComponent implements OnInit{
     name: string;
     ingredients: any[];
     body: string;
-    ingredient: string;
     quantity: string;
+    showForm: boolean = false;
+    queryString: string = "";
 
     constructor(private recipeService:RecipeService, private _fb: FormBuilder){
         this.recipeService.getRecipes()
@@ -24,7 +26,7 @@ export class RecipesComponent implements OnInit{
                 this.recipes = recipes;
             })
     }
-    
+
     ngOnInit(){
         this.myForm = this._fb.group({
             name: ['', [Validators.required]],
@@ -33,6 +35,7 @@ export class RecipesComponent implements OnInit{
                 this.initIngredients(),
             ])
         });
+
     }
 
     initIngredients(){
@@ -64,6 +67,7 @@ export class RecipesComponent implements OnInit{
             .subscribe(recipe => {
                 this.recipes.push(recipe);
                 this.myForm.reset();
+                this.resetQueryString();
             })
     }
 
@@ -75,9 +79,18 @@ export class RecipesComponent implements OnInit{
                     for(var i = 0; i < recipes.length; i++){
                         if(recipes[i]._id == id){
                             recipes.splice(i, 1);
+                            this.resetQueryString();
                         }
                     }
                 }
             });
+    }
+
+    resetQueryString(){
+        this.queryString = " ";
+    }
+
+    toggleForm(){
+        this.showForm = !this.showForm;
     }
 }

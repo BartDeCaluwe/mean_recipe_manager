@@ -20,6 +20,10 @@ var RecipeService = (function () {
         return this.http.get('/api/recipes')
             .map(function (res) { return res.json(); });
     };
+    RecipeService.prototype.getRecipe = function (id) {
+        return this.http.get('/api/recipe/' + id)
+            .map(function (res) { return res.json(); });
+    };
     RecipeService.prototype.addRecipe = function (newRecipe) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
