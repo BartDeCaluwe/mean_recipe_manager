@@ -1,15 +1,43 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent }   from './app.component';
 import { IngredientComponent } from './components/ingredient/ingredient.component'
 import { RecipesComponent } from './components/recipes/recipes.component';
+import { RecipeComponent } from './components/recipes/recipe.component';
+import { CookbooksComponent } from './components/cookbooks/cookbooks.component';
+import { SearchPipe } from './components/searchPipe/search-pipe';
 
 @NgModule({
-  imports:      [ BrowserModule, HttpModule, ReactiveFormsModule ],
-  declarations: [ AppComponent, RecipesComponent, IngredientComponent ],
+  imports:      [ 
+    BrowserModule, 
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        redirectTo: '/recipes',
+        pathMatch: 'full'
+      },
+      {
+        path: 'recipes',
+        component: RecipesComponent        
+      },
+      {
+        path: 'recipe/:_id',
+        component: RecipeComponent
+      },
+      {
+        path: 'cookbooks',
+        component: CookbooksComponent
+      }
+    ])
+    ],
+  declarations: [ AppComponent, RecipesComponent, IngredientComponent, CookbooksComponent, RecipeComponent, SearchPipe ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

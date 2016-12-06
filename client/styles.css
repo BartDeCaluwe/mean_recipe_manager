@@ -1,0 +1,87 @@
+body{
+    background-color: #eee;
+}
+
+hr{
+    border-top-color: #E27A3F;
+}
+
+#addRecipe{
+    cursor: pointer;
+}
+
+#recipesTitle{
+    width: 100%;
+    overflow: hidden;
+}
+
+#recipesTitle>h1{
+    float: left;
+    padding-right: 0.5em;
+}
+
+#searchBox{
+    overflow: hidden;
+}
+
+#searchBox>p{
+    float: left;
+    padding-right: 0.5em;
+}
+
+#searchBox>input{
+    float: left;
+}
+
+.recipeRow{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;   
+    margin-bottom: 0.25em;
+    margin-top: 0.25em;
+    background: #fff;
+    border: 1px solid;
+    border-color: #aaa;
+}
+
+.recipeRow > a{
+    color: #334D5C;
+}
+
+.recipeRow > a:hover{
+    color: #DF5A49;
+}
+
+.navbar {
+    background-color: #334D5C;
+}
+
+.nav{
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    width: 100%;
+}
+
+#searchForm{
+    padding-right: 1em;
+}
+.nav-item{
+    height: 100%;
+}
+
+a{
+    color: #DF5A49;
+}
+
+a.nav-link{
+    font-size: 2em;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+a.nav-link:hover{
+    color: #EFC94C;
+}
+
+button{
+    background-color: #EFC94C;
+}
