@@ -43,6 +43,10 @@ body{
     border-color: #aaa;
 }
 
+.go-to-recipe-button{
+    margin-right: .8em;
+}
+
 .inline{
     display: inline;
 }
@@ -53,6 +57,7 @@ body{
 
 .navbar {
     background-color:  #f44336;
+    border-radius: 0;
 }
 
 .nav{
