@@ -13,6 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
+var common_1 = require('@angular/common');
 var app_component_1 = require('./app.component');
 var ingredient_component_1 = require('./components/ingredient/ingredient.component');
 var recipes_component_1 = require('./components/recipes/recipes.component');
@@ -55,7 +56,8 @@ var AppModule = (function () {
                 ])
             ],
             declarations: [app_component_1.AppComponent, recipes_component_1.RecipesComponent, new_component_1.NewComponent, ingredient_component_1.IngredientComponent, cookbooks_component_1.CookbooksComponent, recipe_component_1.RecipeComponent, search_pipe_1.SearchPipe],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [app_component_1.AppComponent],
+            providers: [{ provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy }],
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

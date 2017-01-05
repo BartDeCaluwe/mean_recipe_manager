@@ -30,8 +30,8 @@ body{
 }
 
 .recipeRow{
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;   
+    padding: .5em;
+    height: 4em;
     margin-bottom: 0.25em;
     margin-top: 0.25em;
     background: #fff;
@@ -39,10 +39,12 @@ body{
     border-color: #aaa;
 }
 
+.inline{
+    display: inline;
+}
 
 .recipeRow > a:hover{
     color: #DF5A49;
-    text-decoration: none;    
 }
 
 .navbar {
