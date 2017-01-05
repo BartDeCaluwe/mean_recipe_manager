@@ -1,18 +1,18 @@
 <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
 <div [formGroup]="ingredientForm">
     <!--ingredient name-->
-    <div class="col-sm-6"> 
+    <div class="col-sm-5"> 
         <label>Ingredient</label>
-        <input type="text" formControlName="name">
+        <input class="form-control" type="text" formControlName="name">
         <small [hidden]="ingredientForm.controls.name.valid || ingredientForm.controls.name.pristine"
             class="alert alert-danger">
             Name is required
         </small>
     </div>
     <!--quantity-->
-    <div class="col-sm-6">
+    <div class="col-sm-5">
         <label>Quantity</label>
-        <input type="text" formControlName="quantity">
+        <input class="form-control" type="text" formControlName="quantity">
         <small [hidden]="ingredientForm.controls.quantity.valid || ingredientForm.controls.quantity.pristine"
             class="alert alert-danger">
             Quantity is required
