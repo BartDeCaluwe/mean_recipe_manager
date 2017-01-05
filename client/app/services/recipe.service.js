@@ -27,7 +27,7 @@ var RecipeService = (function () {
     RecipeService.prototype.addRecipe = function (newRecipe) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/recipe', JSON.stringify(newRecipe), { headers: headers })
+        return this.http.post('/api/new', JSON.stringify(newRecipe), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     RecipeService.prototype.deleteRecipe = function (id) {

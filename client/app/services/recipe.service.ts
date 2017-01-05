@@ -21,7 +21,7 @@ export class RecipeService{
     addRecipe(newRecipe){
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/recipe', JSON.stringify(newRecipe), { headers })
+        return this.http.post('/api/new', JSON.stringify(newRecipe), { headers })
             .map(res => res.json());
     }
 

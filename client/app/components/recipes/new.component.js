@@ -1,0 +1,93 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
+var router_1 = require('@angular/router');
+var recipe_service_1 = require('../../services/recipe.service');
+var NewComponent = (function () {
+    function NewComponent(recipeService, route, router, _fb) {
+        var _this = this;
+        this.recipeService = recipeService;
+        this.route = route;
+        this.router = router;
+        this._fb = _fb;
+        this.recipeService.getRecipes()
+            .subscribe(function (recipes) {
+            _this.recipes = recipes;
+        });
+    }
+    NewComponent.prototype.ngOnInit = function () {
+        this.myForm = this._fb.group({
+            name: ['', [forms_1.Validators.required]],
+            body: ['', [forms_1.Validators.required, forms_1.Validators.maxLength(10000)]],
+            ingredients: this._fb.array([
+                this.initIngredients(),
+            ])
+        });
+    };
+    NewComponent.prototype.initIngredients = function () {
+        return this._fb.group({
+            name: ['', forms_1.Validators.required],
+            quantity: ['', forms_1.Validators.required]
+        });
+    };
+    NewComponent.prototype.addIngredient = function () {
+        var control = this.myForm.controls['ingredients'];
+        control.push(this.initIngredients());
+    };
+    NewComponent.prototype.removeIngredient = function (i) {
+        var control = this.myForm.controls['ingredients'];
+        control.removeAt(i);
+    };
+    NewComponent.prototype.addRecipe = function (formValue) {
+        var _this = this;
+        //event.preventDefault();
+        var newRecipe = {
+            name: formValue.name,
+            ingredients: formValue.ingredients,
+            body: formValue.body
+        };
+        console.log(formValue);
+        this.recipeService.addRecipe(newRecipe)
+            .subscribe(function (recipe) {
+            _this.recipes.push(recipe);
+            _this.myForm.reset();
+            /*this.resetQueryString();*/
+        });
+    };
+    NewComponent.prototype.deleteRecipe = function (id) {
+        var recipes = this.recipes;
+        this.recipeService.deleteRecipe(id)
+            .subscribe(function (data) {
+            if (data.n == 1) {
+                for (var i = 0; i < recipes.length; i++) {
+                    if (recipes[i]._id == id) {
+                        recipes.splice(i, 1);
+                    }
+                }
+            }
+        });
+    };
+    NewComponent.prototype.goToRecipes = function () {
+        this.router.navigate(['/recipes']);
+    };
+    NewComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'new',
+            templateUrl: 'new.component.html'
+        }), 
+        __metadata('design:paramtypes', [recipe_service_1.RecipeService, router_1.ActivatedRoute, router_1.Router, forms_1.FormBuilder])
+    ], NewComponent);
+    return NewComponent;
+}());
+exports.NewComponent = NewComponent;
+//# sourceMappingURL=new.component.js.map

@@ -17,6 +17,7 @@ var app_component_1 = require('./app.component');
 var ingredient_component_1 = require('./components/ingredient/ingredient.component');
 var recipes_component_1 = require('./components/recipes/recipes.component');
 var recipe_component_1 = require('./components/recipes/recipe.component');
+var new_component_1 = require('./components/recipes/new.component');
 var cookbooks_component_1 = require('./components/cookbooks/cookbooks.component');
 var search_pipe_1 = require('./components/searchPipe/search-pipe');
 var AppModule = (function () {
@@ -40,6 +41,10 @@ var AppModule = (function () {
                         component: recipes_component_1.RecipesComponent
                     },
                     {
+                        path: 'new',
+                        component: new_component_1.NewComponent
+                    },
+                    {
                         path: 'recipe/:_id',
                         component: recipe_component_1.RecipeComponent
                     },
@@ -49,7 +54,7 @@ var AppModule = (function () {
                     }
                 ])
             ],
-            declarations: [app_component_1.AppComponent, recipes_component_1.RecipesComponent, ingredient_component_1.IngredientComponent, cookbooks_component_1.CookbooksComponent, recipe_component_1.RecipeComponent, search_pipe_1.SearchPipe],
+            declarations: [app_component_1.AppComponent, recipes_component_1.RecipesComponent, new_component_1.NewComponent, ingredient_component_1.IngredientComponent, cookbooks_component_1.CookbooksComponent, recipe_component_1.RecipeComponent, search_pipe_1.SearchPipe],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

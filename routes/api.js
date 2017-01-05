@@ -23,8 +23,17 @@ router.get('/recipe/:id', function(req, res, next){
     });
 });
 
+router.get('/new', function(req, res, next){
+    db.recipes.find(function(err, recipes){
+        if(err){
+            res.send(err);
+        }
+        res.json(recipes);
+    });
+});
+
 // Save Recipe:
-router.post('/recipe', function(req, res, next){
+router.post('/new', function(req, res, next){
     var recipe = req.body;
     if(!recipe.name || !recipe.ingredients){
         res.status(400);

@@ -8,6 +8,7 @@ import { AppComponent }   from './app.component';
 import { IngredientComponent } from './components/ingredient/ingredient.component'
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { RecipeComponent } from './components/recipes/recipe.component';
+import { NewComponent } from './components/recipes/new.component';
 import { CookbooksComponent } from './components/cookbooks/cookbooks.component';
 import { SearchPipe } from './components/searchPipe/search-pipe';
 
@@ -28,6 +29,10 @@ import { SearchPipe } from './components/searchPipe/search-pipe';
         component: RecipesComponent        
       },
       {
+        path: 'new',
+        component: NewComponent        
+      },
+      {
         path: 'recipe/:_id',
         component: RecipeComponent
       },
@@ -37,7 +42,7 @@ import { SearchPipe } from './components/searchPipe/search-pipe';
       }
     ])
     ],
-  declarations: [ AppComponent, RecipesComponent, IngredientComponent, CookbooksComponent, RecipeComponent, SearchPipe ],
+  declarations: [ AppComponent, RecipesComponent, NewComponent, IngredientComponent, CookbooksComponent, RecipeComponent, SearchPipe ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

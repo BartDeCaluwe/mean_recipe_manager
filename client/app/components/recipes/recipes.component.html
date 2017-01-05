@@ -5,6 +5,7 @@
 <br>
 <hr>
 <div class="container">
+    <!-- Start new recipe form -->
     <form [formGroup]="myForm" *ngIf="showForm" novalidate (ngSubmit)="addRecipe(myForm.value)" class="well">
         <!--name-->
         <div class="form-group">
@@ -40,6 +41,7 @@
         </div>
         <button type="submit" [disabled]="!myForm.valid">Submit</button>
     </form>
+    <!-- End new recipe form -->
 </div>
 <div class="row">
     <div class="col-md-6" id="searchBox">
