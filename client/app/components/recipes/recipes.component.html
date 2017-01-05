@@ -20,7 +20,7 @@
     <div class="col-md-8">
         <div *ngFor="let recipe of recipes | SearchPipe:queryString">
                 <div class="panel panel-default">
-                    <h4 class="panel-heading">{{ recipe.name }}</h4>
+                    <div class="panel-heading">{{ recipe.name }}</div>
                     <div class="panel-body">
                         <p *ngFor="let ingredient of recipe.ingredients">
                             {{ ingredient.name}} : {{ ingredient.quantity }}
