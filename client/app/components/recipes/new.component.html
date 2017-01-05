@@ -7,7 +7,7 @@
             <!--name-->
             <div class="form-group">
                 <label>Recipe Name</label>
-                <input type="text" formControlName="name">
+                <input type="text" formControlName="name" class="form-control">
                 <small [hidden]="myForm.controls.name.valid || myForm.controls.name.pristine" class="alert alert-danger">
                     Name is required
                 </small>
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label>Recipe instructions</label>
-                <textarea formControlName="body" id="bodyTextArea" cols="70" rows="5" style="width: 100%"></textarea>
+                <textarea class="form-control" formControlName="body" id="bodyTextArea" cols="70" rows="5" style="width: 100%"></textarea>
                 <small [hidden]="myForm.controls.body.valid || myForm.controls.body.pristine" class="alert alert-danger">
                     Instructions are required
                 </small>
