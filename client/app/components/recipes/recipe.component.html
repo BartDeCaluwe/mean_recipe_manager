@@ -1,16 +1,22 @@
-<div class="col-md-2"></div>
-<div class="col-md-8">
-    <div *ngIf="recipe">
-        <h1 class="display-3">{{ recipe.name}}</h1>
-        <div *ngFor="let ingredient of recipe.ingredients">
-            <p class="lead">
-                {{ ingredient.quantity }} {{ ingredient.name }}
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <div *ngIf="recipe">
+            <h1 class="display-3">{{ recipe.name}}</h1>
+            <span>Ingredienten: </span>
+            <div *ngFor="let ingredient of recipe.ingredients">
+                <p>
+                    {{ ingredient.quantity }} : {{ ingredient.name }}
+                </p>
+            </div>
+            <br>
+            <span>Instructies: </span>
+            <p>
+                {{ recipe.body }}
             </p>
         </div>
-        <p>
-            {{ recipe.body }}
-        </p>
+        <button class="btn btn-primary" (click)="goToRecipes()">BACK</button>
     </div>
-    <button class="btn btn-primary" (click)="goToRecipes()">BACK</button>
+    <div class="col-md-2"></div>
 </div>
-<div class="col-md-2"></div>

@@ -2,6 +2,10 @@ body{
     background-color: #fff;
 }
 
+.container{
+    background-color: #eee;
+    padding-bottom: 4em;
+}
 #addRecipe{
     cursor: pointer;
 }
@@ -59,6 +63,14 @@ body{
 
 #searchForm{
     padding-right: 1em;
+}
+
+.new-form-ingredient{
+    margin-left: -1em;
+}
+
+.form-button{
+    margin-top: 1.8em;
 }
 .nav-item{
     height: 100%;

@@ -1,34 +1,32 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div id="recipesTitle">
-                <h1>My Recipes</h1>
-            </div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div id="recipesTitle">
+            <h1>My Recipes</h1>
         </div>
-        <div class="col-md-2"></div>        
     </div>
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8" id="searchBox">
-            <p class="lead">Search recipe: </p>
-            <input type="text" class="form-control" [(ngModel)]="queryString" placeholder="Filter by..">
+    <div class="col-md-2"></div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8" id="searchBox">
+        <p class="lead">Search recipe: </p>
+        <input type="text" class="form-control" [(ngModel)]="queryString" placeholder="Filter by..">
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="recipeRow" *ngFor="let recipe of recipes | SearchPipe:queryString">
+            <input type="button" (click)="deleteRecipe(recipe._id)" class="btn btn-danger inline pull-right" value="Delete">
+            <a class="inline" routerLink="/recipe/{{recipe._id}}" routerLinkActive="active">
+                <p>{{ recipe.name }}</p>
+                <p class="inline" *ngFor="let ingredient of recipe.ingredients">
+                    {{ ingredient.name}} : {{ ingredient.quantity }}
+                </p>
+            </a>
         </div>
-        <div class="col-md-2"></div>
     </div>
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div class="recipeRow" *ngFor="let recipe of recipes | SearchPipe:queryString">
-                <input type="button" (click)="deleteRecipe(recipe._id)" class="btn btn-danger inline pull-right" value="Delete">
-                <a class="inline" routerLink="/recipe/{{recipe._id}}" routerLinkActive="active">
-                        <p>{{ recipe.name }}</p>
-                        <p class="inline" *ngFor="let ingredient of recipe.ingredients">
-                            {{ ingredient.name}} : {{ ingredient.quantity }}
-                        </p>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
+    <div class="col-md-2"></div>
 </div>
