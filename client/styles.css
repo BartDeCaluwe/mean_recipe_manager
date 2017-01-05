@@ -1,9 +1,5 @@
 body{
-    background-color: #eee;
-}
-
-hr{
-    border-top-color: #E27A3F;
+    background-color: #fff;
 }
 
 #addRecipe{
@@ -43,16 +39,14 @@ hr{
     border-color: #aaa;
 }
 
-.recipeRow > a{
-    color: #334D5C;
-}
 
 .recipeRow > a:hover{
     color: #DF5A49;
+    text-decoration: none;    
 }
 
 .navbar {
-    background-color: #334D5C;
+    background-color:  #f44336;
 }
 
 .nav{
@@ -68,20 +62,16 @@ hr{
     height: 100%;
 }
 
-a{
-    color: #DF5A49;
-}
-
 a.nav-link{
     font-size: 2em;
     padding-left: 0.25em;
     padding-right: 0.25em;
+    color: #fff;
+    text-decoration: none;
 }
 
-a.nav-link:hover{
-    color: #EFC94C;
-}
-
-button{
-    background-color: #EFC94C;
+.active{
+    padding-top: 11px;
+    padding-bottom: 6px;
+    background-color: #ef9a9a;
 }

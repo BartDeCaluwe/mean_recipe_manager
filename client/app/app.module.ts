@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {PathLocationStrategy, HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 import { AppComponent }   from './app.component';
 import { IngredientComponent } from './components/ingredient/ingredient.component'
@@ -43,6 +44,7 @@ import { SearchPipe } from './components/searchPipe/search-pipe';
     ])
     ],
   declarations: [ AppComponent, RecipesComponent, NewComponent, IngredientComponent, CookbooksComponent, RecipeComponent, SearchPipe ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
 export class AppModule { }
