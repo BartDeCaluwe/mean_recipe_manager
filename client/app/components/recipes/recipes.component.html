@@ -25,8 +25,8 @@
                         <p *ngFor="let ingredient of recipe.ingredients">
                             {{ ingredient.name}} : {{ ingredient.quantity }}
                         </p>
-                        <input type="button" (click)="deleteRecipe(recipe._id)" class="btn btn-danger" value="Delete">
                         <a class="go-to-recipe-button btn btn-primary" routerLink="/recipe/{{recipe._id}}" routerLinkActive="active">View Recipe</a>
+                        <input type="button" (click)="deleteRecipe(recipe._id)" class="btn btn-danger" value="Delete">
                     </div>
                 </div>
         </div>
