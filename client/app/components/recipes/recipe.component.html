@@ -1,5 +1,6 @@
-<div class="jumbotron jumbotron-fluid col-md-8">
-    <div class="container" *ngIf="recipe">
+<div class="col-md-2"></div>
+<div class="col-md-8">
+    <div *ngIf="recipe">
         <h1 class="display-3">{{ recipe.name}}</h1>
         <div *ngFor="let ingredient of recipe.ingredients">
             <p class="lead">
@@ -10,5 +11,6 @@
             {{ recipe.body }}
         </p>
     </div>
-    <button (click)="goToRecipes()">BACK</button>
+    <button class="btn btn-primary" (click)="goToRecipes()">BACK</button>
 </div>
+<div class="col-md-2"></div>
